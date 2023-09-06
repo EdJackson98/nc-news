@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ArticleCard from "./ArticleCard";
-import getArticlesList from "../utils/api";
+import { getArticlesList } from "../utils/api";
+import Header1 from "./Header";
 
 const ArticlesList = () => {
   const [articleData, setArticleData] = useState([]);
@@ -13,6 +14,7 @@ const ArticlesList = () => {
 
   return (
     <div className="ArticlesList">
+    <Header1/>
       <ul>
         {articleData.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
