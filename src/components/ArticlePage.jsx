@@ -19,10 +19,9 @@ const ArticlePage = () => {
   }, [article_id]);
 
   const handleUpvote = () => {
-    if (isLoading) {
-      return;
-    }
-    setVoteCount(voteCount + 1);
+    setVoteCount((voteCount)=>{
+        return voteCount + 1
+    });
     setIsLoading(true);
     patchArticleVote(article_id, 1)
       .then(() => {
