@@ -25,6 +25,11 @@ export const getCommentsByArticle = (article_id) => {
 };
 
 export const patchArticleVote = (article_id, inc_votes) => {
-  const endpoint = `/api/articles/${article_id}`;
-  return api.patch(endpoint, { inc_votes });
+  const string = `/api/articles/${article_id}`;
+  return api.patch(string, { inc_votes });
+};
+
+export const postComment = (article_id, commentData) => {
+  const string = `/api/articles/${article_id}/comments`;
+  return api.post(string, commentData);
 };
