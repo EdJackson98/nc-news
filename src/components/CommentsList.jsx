@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CommentCard from "./CommentCard";
+import CommentBox from "./CommentBox"
 import { getCommentsByArticle } from "../utils/api";
 
 const CommentsList = ({ article_id }) => {
@@ -21,6 +22,7 @@ const CommentsList = ({ article_id }) => {
 
   return (
     <div className="CommentsList">
+    <CommentBox article_id={article_id}/>
       {isLoading && (
         <p>Loading comments...</p>
       )}

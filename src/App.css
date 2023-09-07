@@ -168,7 +168,7 @@ body {
   max-height: calc(100vh - 220px);
 }
 
-.CommentCard {
+.CommentCard, .CommentBox {
   background-color: #fff;
   list-style-type: none;
   color: black;
