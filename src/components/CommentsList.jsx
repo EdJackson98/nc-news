@@ -2,36 +2,42 @@ import React, { useState, useEffect } from "react";
 import CommentCard from "./CommentCard";
 import { getCommentsByArticle } from "../utils/api";
 
-const CommentsList = ({article_id}) => {
+const CommentsList = ({ article_id }) => {
   const [commentData, setCommentData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getCommentsByArticle(article_id).then(({ comments }) => {
-        setCommentData(comments);
-    });
+    setIsLoading(true);
+    getCommentsByArticle(article_id)
+      .then((response) => {
+        if (response.msg) {
+          setCommentData([]);
+        } else {
+          setCommentData(response.comments);
+        }
+        setIsLoading(false);
+      })
   }, [article_id]);
 
   return (
     <div className="CommentsList">
-      <ul>
-        {commentData.map((comment) => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
-        })}
-      </ul>
+      {isLoading && (
+        <p>Loading comments...</p>
+      )}
+  
+      {!isLoading && commentData.length === 0 && (
+        <p style={{ color: 'red' }}>No comments found for this article.</p>
+      )}
+  
+      {!isLoading && commentData.length > 0 && (
+        <ul>
+          {commentData.map((comment) => (
+            <CommentCard key={comment.comment_id} comment={comment} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
 
 export default CommentsList;
-
-//   return (
-//     <div className="ArticlesList">
-//     <Header1/>
-//       <ul>
-//         {articleData.map((article) => {
-//           return <ArticleCard key={article.article_id} article={article} />;
-//         })}
-//       </ul>
-//     </div>
-//   );
-// };
