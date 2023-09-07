@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ArticleHeader from './ArticleHeader';
 import { getArticlePage } from '../utils/api';
+import CommentsList from "./CommentsList.jsx"
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -19,14 +20,20 @@ const ArticlePage = () => {
   }
 
   return (
-    <div className="ArticlePage">
+    <>
+    <div className="ArticleHeader">
       <ArticleHeader />
-      <img className="APImage"src={article.article_img_url} width="100px" alt={article.title} />
+    </div>
+    <div className="ArticlePage">
+        <img className="APImage" src={article.article_img_url} width="100px" alt={article.title} />
         <h3 className="APTitle">{article.title}</h3>
         {/* <h4 className="APAuthor">{article.author}</h4> */}
         <p className="APVotes">Votes: {article.votes}</p>
         <p className="APComments">Comments: {article.comment_count}</p>
-    </div>
+        <p>{article.body}</p>
+      </div>
+    <CommentsList article_id={article_id}/>
+  </>
   );
 };
 

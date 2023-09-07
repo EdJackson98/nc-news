@@ -16,3 +16,10 @@ export const getArticlePage = (article_id) => {
       return result.data;
     });
   };
+
+export const getCommentsByArticle = (article_id) => {
+    let string = `/api/articles/${article_id}/comments`;
+    return api.get(`${string}`).then((result) => {
+      return result.data;
+    });
+}
