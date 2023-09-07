@@ -27,10 +27,10 @@ const ArticlePage = () => {
     <div className="ArticlePage">
         <img className="APImage" src={article.article_img_url} width="100px" alt={article.title} />
         <h3 className="APTitle">{article.title}</h3>
-        {/* <h4 className="APAuthor">{article.author}</h4> */}
         <p className="APVotes">Votes: {article.votes}</p>
         <p className="APComments">Comments: {article.comment_count}</p>
-        <p>{article.body}</p>
+        <button className="UpvoteButton">Upvote!</button>
+        <p className="ArticleBody">{article.body}</p>
       </div>
     <CommentsList article_id={article_id}/>
   </>
