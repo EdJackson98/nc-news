@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../contexts/user-context"; 
 import { postComment } from "../utils/api"; 
 
-const CommentBox = ({ article_id }) => {
+const CommentBox = ({ article_id, onCommentSubmit }) => {
     const { user } = useContext(UserContext);
     const [commentInput, setCommentInput] = useState("");
 
@@ -16,6 +16,13 @@ const CommentBox = ({ article_id }) => {
       postComment(article_id, newComment)
       .then((result)=>{
         console.log(result)
+        if (result.data.comment) {
+            setCommentInput("");
+            onCommentSubmit(result.data.comment);
+            window.alert("Comment successfully posted!");
+          } else {
+            window.alert("Failed to post comment.");
+          }
       });
     }
 
