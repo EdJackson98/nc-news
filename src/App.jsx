@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Header1 from './components/Header';
 import ArticlesList from './components/ArticlesList';
 import ArticlePage from './components/ArticlePage';
 import './App.css';
