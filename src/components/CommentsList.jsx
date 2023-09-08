@@ -21,7 +21,7 @@ const CommentsList = ({ article_id }) => {
   }, [article_id]);
 
   const handleCommentSubmit = (newComment) => {
-    setCommentData((prevComments) => [newComment, ...prevComments]);
+    setCommentData((prevComments) => [...prevComments, newComment]);
   };
 
   return (
@@ -37,7 +37,7 @@ const CommentsList = ({ article_id }) => {
   
       {!isLoading && commentData.length > 0 && (
         <ul>
-          {commentData.map((comment) => (
+          {commentData.slice().reverse().map((comment) => (
             <CommentCard key={comment.comment_id} comment={comment} />
           ))}
         </ul>
