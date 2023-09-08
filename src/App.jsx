@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Header1 from './components/Header';
 import ArticlesList from './components/ArticlesList';
 import ArticlePage from './components/ArticlePage';
-import './app.css';
+import './App.css';
 
 function App() {
 
