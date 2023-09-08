@@ -14,19 +14,27 @@ const CommentBox = ({ article_id }) => {
     const handleSubmit = (e) => {
       e.preventDefault();
       postComment(article_id, newComment)
+      .then((result)=>{
+        console.log(result)
+      });
     }
 
   
     return (
-      <div className="CommentForm">
+      <div className="CommentBox">
+        <p className="CommentAuthor">{user}</p>
         <form onSubmit={handleSubmit}>
           <textarea
+            className="CommentInput"
             placeholder="Write your comment here..."
             value={commentInput}
             onChange={(e) => setCommentInput(e.target.value)}
             required
           />
-          <button type="submit">
+          <button 
+          className="CommentSubmit"
+          type="submit">
+            Submit Comment!
           </button>
         </form>
       </div>

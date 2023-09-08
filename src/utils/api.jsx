@@ -29,7 +29,8 @@ export const patchArticleVote = (article_id, inc_votes) => {
   return api.patch(string, { inc_votes });
 };
 
-export const postComment = (article_id, commentData) => {
+export const postComment = (article_id, newComment) => {
+  console.log(newComment)
   const string = `/api/articles/${article_id}/comments`;
-  return api.post(string, commentData);
+  return api.post(string, newComment);
 };
