@@ -20,9 +20,13 @@ const CommentsList = ({ article_id }) => {
       })
   }, [article_id]);
 
+  const handleCommentSubmit = (newComment) => {
+    setCommentData((prevComments) => [newComment, ...prevComments]);
+  };
+
   return (
     <div className="CommentsList">
-    <CommentBox article_id={article_id}/>
+    <CommentBox article_id={article_id} onCommentSubmit={handleCommentSubmit}/>
       {isLoading && (
         <p>Loading comments...</p>
       )}
